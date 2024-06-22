@@ -1,0 +1,5 @@
+yahooquery
+streamlit-aggrid
+scikit-learn
+python-binance
+matplotlib
