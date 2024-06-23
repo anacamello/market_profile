@@ -217,7 +217,9 @@ if(dados_obtidos):
                             
                             fechamento_dia_anterior = df_dados_filtrados_dia_anterior.at[0, 'Close']
                             
-                            fechamento_dia_anterior = float(fechamento_dia_anterior.replace(',', '.'))
+                            if(type(fechamento_dia_anterior) == str):
+                                
+                                fechamento_dia_anterior = float(fechamento_dia_anterior.replace(',', '.'))
 
                         dia_ant, dados_filtrados_dia_anterior = prepara_dados_dia(df_dados_filtrados_dia_anterior)
 
