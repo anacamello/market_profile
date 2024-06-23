@@ -16,6 +16,16 @@ import plotly.graph_objs as go
 # In[ ]:
 
 
+def le_csv(arquivo):
+    
+    dados = pd.read_csv(arquivo, engine='python', sep=None, encoding = "mbcs")
+    
+    return dados
+
+
+# In[ ]:
+
+
 st.set_page_config(page_title="Análise com Market Profile", layout="wide", initial_sidebar_state="expanded")
 
 st.title('Análise com Market Profile')
@@ -26,7 +36,7 @@ arquivo1 = st.sidebar.file_uploader("Escolha um arquivo .csv com os dados de abe
 
 if(arquivo1):
 
-    dados_iniciais = pd.read_csv(arquivo1, engine='python', sep=None, encoding = "mbcs")
+    dados_iniciais = le_csv(arquivo1)
 
     if("Abertura" in dados_iniciais.columns):
 
@@ -44,7 +54,7 @@ if(arquivo1):
                         
                         if(arquivo2):
 
-                            dados_volume = pd.read_csv(arquivo2, engine='python', sep=None, encoding = "mbcs")
+                            dados_volume = le_csv(arquivo2)
 
                             if("Data" in dados_volume.columns):
 
