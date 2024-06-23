@@ -11,7 +11,6 @@ from datetime import datetime
 import streamlit as st
 from market_profile import MarketProfile
 import plotly.graph_objs as go
-from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode, ColumnsAutoSizeMode
 
 
 # In[ ]:
