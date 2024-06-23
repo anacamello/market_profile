@@ -18,7 +18,7 @@ import plotly.graph_objs as go
 
 def le_csv(arquivo):
     
-    dados = pd.read_csv(arquivo, engine='python', sep=None, encoding = "mbcs")
+    dados = pd.read_csv(arquivo, engine='python', sep=None, encoding = "cp1252")
     
     return dados
 
@@ -32,7 +32,7 @@ st.title('Análise com Market Profile')
 
 dados_obtidos = False
 
-arquivo1 = st.sidebar.file_uploader("Escolha um arquivo .csv com os dados de abertura, máxima, fechamento e mínima aqui", accept_multiple_files = False)
+arquivo1 = st.sidebar.file_uploader("Escolha um arquivo .csv com os dados de abertura, máxima, fechamento e mínima aqui", accept_multiple_files = False, type=['csv'])
 
 if(arquivo1):
 
@@ -50,7 +50,7 @@ if(arquivo1):
 
                         st.sidebar.text("Dados importados com sucesso!")
 
-                        arquivo2 = st.sidebar.file_uploader("Escolha um arquivo .csv com os dados de volume aqui", accept_multiple_files = False)
+                        arquivo2 = st.sidebar.file_uploader("Escolha um arquivo .csv com os dados de volume aqui", accept_multiple_files = False, type=['csv'])
                         
                         if(arquivo2):
 
