@@ -26,7 +26,7 @@ arquivo1 = st.sidebar.file_uploader("Escolha um arquivo .csv com os dados de abe
 
 if(arquivo1):
 
-    dados_iniciais = pd.read_csv(arquivo1, engine='python', sep=None, encoding='dbcs')
+    dados_iniciais = pd.read_csv(arquivo1, engine='python', sep=None)
 
     if("Abertura" in dados_iniciais.columns):
 
@@ -44,7 +44,7 @@ if(arquivo1):
                         
                         if(arquivo2):
 
-                            dados_volume = pd.read_csv(arquivo2, engine='python', sep=None, encoding='dbcs')
+                            dados_volume = pd.read_csv(arquivo2, engine='python', sep=None)
 
                             if("Data" in dados_volume.columns):
 
