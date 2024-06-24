@@ -183,6 +183,11 @@ if(dados_obtidos):
         if(len(pd_dados_filtrados_dia) > 0):
 
             dia, dados_filtrados_dia = prepara_dados_dia(pd_dados_filtrados_dia)
+            
+            pd_dados_filtrados_dia.sort_values(by=['Date'], inplace = True, ascending=[False])          
+            pd_dados_filtrados_dia = pd_dados_filtrados_dia.reset_index(drop = True)
+                        
+            fechamento_dia = pd_dados_filtrados_dia.at[0, 'Close']
 
             mp = MarketProfile(dados_filtrados_dia.iloc[:,0:5])
 
@@ -224,11 +229,9 @@ if(dados_obtidos):
                             
                             df_dados_filtrados_dia_anterior = df_dados_filtrados_dia_anterior.reset_index(drop = True)
                             
-                            fechamento_dia_anterior = df_dados_filtrados_dia_anterior.at[0, 'Close']
-                            
-                            if(type(fechamento_dia_anterior) == str):
+                            if(type(fechamento_dia) == str):
                                 
-                                fechamento_dia_anterior = float(fechamento_dia_anterior.replace(',', '.'))
+                                fechamento_dia = float(fechamento_dia.replace(',', '.'))
 
                         dia_ant, dados_filtrados_dia_anterior = prepara_dados_dia(df_dados_filtrados_dia_anterior)
 
@@ -238,7 +241,7 @@ if(dados_obtidos):
 
                         poc2 = mp_slice2.poc_price
                         
-                        if(poc2 >= fechamento_dia_anterior):
+                        if(poc2 >= fechamento_dia):
                 
                             cores.append("red")
 
@@ -297,7 +300,7 @@ if(dados_obtidos):
 
             fig.update_layout(autosize=False, width=500, height=1000)
 
-            if(poc >= fechamento_dia_anterior):
+            if(poc >= fechamento_dia):
                 
                 cor = "red"
                 
@@ -307,7 +310,7 @@ if(dados_obtidos):
 
             fig.add_hline(y=poc, line_width=2, line_color=cor, annotation_text="POC - " + str(data_escolhida) + ": " + str(poc), annotation_position="top right", annotation_font_size=12, annotation_font_color="black")
             
-            if(vah >= fechamento_dia_anterior):
+            if(vah >= fechamento_dia):
                 
                 cor = "red"
                 
@@ -317,7 +320,7 @@ if(dados_obtidos):
 
             fig.add_hline(y=vah, line_width=2, line_color=cor, annotation_text="VAH: " + str(vah), annotation_position="top right", annotation_font_size=12, annotation_font_color="blue")
             
-            if(val >= fechamento_dia_anterior):
+            if(val >= fechamento_dia):
                 
                 cor = "red"
                 
